@@ -60,21 +60,6 @@ class FindDocumentsByQuery(BaseObject):
         Returns:
             list: 0..* results
         """
-        # sw = Stopwatch()
-
-        # if self.isEnabledForDebug:
-        #     Enforcer.is_dict(query)
-
-        # documents = list(self._collection.find(query))
-
-        # if self.isEnabledForDebug:
-        #     self.logger.debug('\n'.join([
-        #         "Find Documents By Query",
-        #         f"\tQuery: {query}",
-        #         f"\tTotal Time: {str(sw)}",
-        #         f"\tTotal Results: {len(documents)}"]))
-
-        # return documents
         sw = Stopwatch()
 
         if self.isEnabledForDebug:

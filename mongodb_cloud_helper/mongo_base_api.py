@@ -37,7 +37,8 @@ class MongoBaseAPI(BaseObject):
     def query(self,
               database: str,
               collection: str,
-              query: dict) -> list:
+              query: dict,
+              sort_field: str = None) -> list:
         """ Query MongoDB in the Cloud
 
         Args:
@@ -54,7 +55,9 @@ class MongoBaseAPI(BaseObject):
             collection=collection,
             client=self._client)
 
-        return svc.process(query)
+        return svc.process(
+            query=query,
+            sort_field=sort_field)
 
     def persist_many(self,
                      database: str,

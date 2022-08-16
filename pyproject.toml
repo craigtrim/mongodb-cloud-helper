@@ -2,7 +2,7 @@
 authors = ["Craig Trim <craigtrim@gmail.com>"]
 description = "Helper Microservice when a MongoDB Cloud instance is required."
 name = "mongodb-cloud-helper"
-version = "0.1.2"
+version = "0.1.3"
 
 [tool.poetry.dependencies]
 baseblock = "*"
