@@ -4,6 +4,7 @@
 
 
 from pymongo import MongoClient
+from pymongo import DESCENDING
 
 
 from baseblock import Enforcer
@@ -47,7 +48,8 @@ class FindDocumentsByQuery(BaseObject):
                 f"\tCollection: {collection}"]))
 
     def process(self,
-                query: dict) -> list:
+                query: dict,
+                sort_field: str = None) -> list:
         """ Find Results  by Query
 
         Args:
@@ -58,18 +60,39 @@ class FindDocumentsByQuery(BaseObject):
         Returns:
             list: 0..* results
         """
+        # sw = Stopwatch()
+
+        # if self.isEnabledForDebug:
+        #     Enforcer.is_dict(query)
+
+        # documents = list(self._collection.find(query))
+
+        # if self.isEnabledForDebug:
+        #     self.logger.debug('\n'.join([
+        #         "Find Documents By Query",
+        #         f"\tQuery: {query}",
+        #         f"\tTotal Time: {str(sw)}",
+        #         f"\tTotal Results: {len(documents)}"]))
+
+        # return documents
         sw = Stopwatch()
 
         if self.isEnabledForDebug:
             Enforcer.is_dict(query)
 
-        documents = list(self._collection.find(query))
+        def find_in_collection():
+            finder = self._collection.find(query)
+            if not sort_field:
+                return finder
+            return finder.sort(sort_field, DESCENDING)
+
+        documents = list(find_in_collection())
 
         if self.isEnabledForDebug:
             self.logger.debug('\n'.join([
                 "Find Documents By Query",
-                f"\tQuery: {query}",
                 f"\tTotal Time: {str(sw)}",
-                f"\tTotal Results: {len(documents)}"]))
+                f"\tTotal Results: {len(documents)}",
+                f"\tQuery: {query}"]))
 
         return documents
