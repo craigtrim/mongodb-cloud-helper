@@ -14,5 +14,4 @@ build:
 
 all:
 	make build
-	make copy
 	poetry run python -m pip install --upgrade pip
