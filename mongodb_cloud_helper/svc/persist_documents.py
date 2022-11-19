@@ -40,23 +40,23 @@ class PersistDocuments(BaseObject):
 
         if self.isEnabledForDebug:
             self.logger.debug('\n'.join([
-                "Initialized Service",
-                f"\tDatabase: {database}",
-                f"\tCollection: {collection}"]))
+                'Initialized Service',
+                f'\tDatabase: {database}',
+                f'\tCollection: {collection}']))
 
     def _validate(self,
                   document: dict) -> None:
 
         if type(document) != dict:
             self.logger.error('\n'.join([
-                "Invalid Persistence Request",
-                f"\tInput Document must be dictionaries"]))
+                'Invalid Persistence Request',
+                '\tInput Document must be dictionaries']))
             raise ValueError
 
         if 'membership' not in document:
             self.logger.error('\n'.join([
-                "Invalid Persistence Request",
-                f"\tInput Document must have pre-assigned Membership ID"]))
+                'Invalid Persistence Request',
+                '\tInput Document must have pre-assigned Membership ID']))
             raise ValueError
 
     def one(self,
@@ -71,9 +71,9 @@ class PersistDocuments(BaseObject):
 
         try:
             self._collection.insert_many(documents)
-        except BulkWriteError as e:
+        except BulkWriteError:
             self.logger.error('\n'.join([
-                "Failed to Persist Documents",
-                f"\tTotal Failed Documents: {len(documents)}"]))
+                'Failed to Persist Documents',
+                f'\tTotal Failed Documents: {len(documents)}']))
 
         return None

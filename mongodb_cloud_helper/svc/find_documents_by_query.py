@@ -43,9 +43,9 @@ class FindDocumentsByQuery(BaseObject):
 
         if self.isEnabledForDebug:
             self.logger.debug('\n'.join([
-                "Initialized Service",
-                f"\tDatabase: {database}",
-                f"\tCollection: {collection}"]))
+                'Initialized Service',
+                f'\tDatabase: {database}',
+                f'\tCollection: {collection}']))
 
     def process(self,
                 query: dict,
@@ -75,9 +75,9 @@ class FindDocumentsByQuery(BaseObject):
 
         if self.isEnabledForDebug:
             self.logger.debug('\n'.join([
-                "Find Documents By Query",
-                f"\tTotal Time: {str(sw)}",
-                f"\tTotal Results: {len(documents)}",
-                f"\tQuery: {query}"]))
+                'Find Documents By Query',
+                f'\tTotal Time: {str(sw)}',
+                f'\tTotal Results: {len(documents)}',
+                f'\tQuery: {query}']))
 
         return documents

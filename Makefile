@@ -1,3 +1,6 @@
+# ----------------------------------------------------------------
+# helpers/mongodb-cloud-helper
+# ----------------------------------------------------------------
 install:
 	poetry check
 	poetry lock
@@ -12,6 +15,15 @@ build:
 	make test
 	poetry build
 
+linters:
+	poetry run pre-commit run --all-files
+	poetry run flakeheaven lint
+
+freeze:
+	poetry run pip freeze > requirements.txt
+	poetry run python -m pip install --upgrade pip
+
 all:
 	make build
-	poetry run python -m pip install --upgrade pip
+	make linters
+	make freeze

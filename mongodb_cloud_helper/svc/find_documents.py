@@ -39,9 +39,9 @@ class FindDocuments(BaseObject):
 
         if self.isEnabledForDebug:
             self.logger.debug('\n'.join([
-                "Initialized Service",
-                f"\tDatabase: {database}",
-                f"\tCollection: {collection}"]))
+                'Initialized Service',
+                f'\tDatabase: {database}',
+                f'\tCollection: {collection}']))
 
     def find(self) -> list:
         sw = Stopwatch()
@@ -50,8 +50,8 @@ class FindDocuments(BaseObject):
 
         if self.isEnabledForDebug:
             self.logger.debug('\n'.join([
-                "Retrieved Results",
-                f"\tTotal Results: {len(results)}",
-                f"\tTotal Time: {str(sw)}"]))
+                'Retrieved Results',
+                f'\tTotal Results: {len(results)}',
+                f'\tTotal Time: {str(sw)}']))
 
         return results
