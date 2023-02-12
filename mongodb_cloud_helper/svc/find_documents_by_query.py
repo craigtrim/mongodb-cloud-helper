@@ -15,9 +15,6 @@ from baseblock import BaseObject
 class FindDocumentsByQuery(BaseObject):
     """ Find Documents by (nested) Field """
 
-    __slots__ = (
-    )
-
     def __init__(self,
                  database: str,
                  collection: str,

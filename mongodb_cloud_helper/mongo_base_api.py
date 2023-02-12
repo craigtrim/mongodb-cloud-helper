@@ -3,6 +3,9 @@
 """ Mongo API for Basic Operations """
 
 
+from pymongo import MongoClient
+
+
 from baseblock import BaseObject
 
 from mongodb_cloud_helper.svc import FindDocuments
@@ -13,15 +16,23 @@ from mongodb_cloud_helper.svc import FindDocumentsByQuery
 class MongoBaseAPI(BaseObject):
     """ Mongo API for Basic Operations """
 
-    def __init__(self):
-        """
+    def __init__(self,
+                 client: MongoClient):
+        """ Change Log:
+
         Created:
             16-Aug-2022
             craigtrim@gmail.com
+        Updated:
+            11-Feb-2023
+            craigtrim@gmail.com
+            *   pass 'client' as a parameter
+
+        Args:
+            client (MongoClient): an instantiated mongo client instance
         """
         BaseObject.__init__(self, __name__)
-        from mongodb_cloud_helper import MongoConnector
-        self._client = MongoConnector().client()
+        self._client = client
 
     def all(self,
             database: str,

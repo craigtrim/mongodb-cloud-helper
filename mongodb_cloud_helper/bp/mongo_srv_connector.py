@@ -11,11 +11,8 @@ from baseblock import BaseObject
 from baseblock import CryptoBase
 
 
-class MongoConnector(BaseObject):
+class MongoSrvConnector(BaseObject):
     """ Connect to the MongoDB instance  """
-
-    __slots__ = (
-    )
 
     def __init__(self,
                  srv_key: str = 'MONGODB_SRV'):
@@ -24,6 +21,10 @@ class MongoConnector(BaseObject):
         Created:
             16-Aug-2022
             craigtrim@gmail.com
+        Updated:
+            11-Feb-2023
+            craigtrim@gmail.com
+            *   renamed from 'mongo-connector'
 
         Args:
             srv_key (str, optional): the SRV string for connecting to the Cloud Instance of MongoDB. Defaults to 'MONGODB_SRV'.
